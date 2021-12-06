@@ -1,6 +1,7 @@
 import React from 'react';
-import { Forms } from './components/forms/forms'
-import { List } from './components/list/list'
+import './app.scss'
+import { Forms } from '../components/forms/forms'
+import { List } from '../components/list/list'
 
 function App() {
   return (

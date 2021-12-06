@@ -1,5 +1,6 @@
 import React from 'react'
-import { Button } from '../button'
+import './forms.scss'
+import { Button } from '../button/button'
 
 export class Forms extends React.Component {
   render () {
