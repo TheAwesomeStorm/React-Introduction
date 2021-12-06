@@ -5,7 +5,7 @@ import { Button } from '../button/button'
 export class Forms extends React.Component {
   render () {
     return (
-      <form>
+      <form className='newTask'>
         <div>
           <label htmlFor="tarefa">Adicione um novo estudo</label>
           <input type='text' name='tarefa' id='tarefa' placeholder='O que você quer estudar' required />

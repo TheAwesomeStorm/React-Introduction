@@ -14,7 +14,7 @@ export function List() {
   }]
 
   return (
-    <aside>
+    <aside className='taskList'>
       <h2>Estudos do dia</h2>
       <ul>
         {tasks.map((item, index) => (
