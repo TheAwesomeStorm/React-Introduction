@@ -18,7 +18,7 @@ export function List() {
       <h2>Estudos do dia</h2>
       <ul>
         {tasks.map((item, index) => (
-          <li key={index}>
+          <li key={index} className='item'>
             <h3>{item.tarefa}</h3>
             <span>{item.tempo}</span>
           </li>
