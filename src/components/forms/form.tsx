@@ -49,6 +49,6 @@ export class Form extends React.Component {
   }
 
   private SetTimeState(event: ChangeEvent<HTMLInputElement>) {
-    this.setState({...this.state, tempo: event.target.value})
+    this.setState({tempo: event.target.value})
   }
 }
