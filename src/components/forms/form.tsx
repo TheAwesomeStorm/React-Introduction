@@ -15,7 +15,7 @@ export class Form extends React.Component<FormProps> {
 
   render () {
     return (
-      <form className={style.newTask} onSubmit={this.saveTask.bind(this)}>
+      <form className={style.newTask} onSubmit={this.addTask.bind(this)}>
         <div className={style.inputContainer}>
           <label htmlFor="task">Adicione um novo estudo</label>
           <input
@@ -24,6 +24,7 @@ export class Form extends React.Component<FormProps> {
             id='task'
             onChange={this.setTaskState.bind(this)}
             placeholder='O que você quer estudar'
+            value={this.state.tarefa}
             required />
         </div>
         <div className={style.inputContainer}>
@@ -44,9 +45,13 @@ export class Form extends React.Component<FormProps> {
     )
   }
 
-  private saveTask(event: ChangeEvent<HTMLFormElement>) {
+  private addTask(event: ChangeEvent<HTMLFormElement>) {
     event.preventDefault()
     this.props.setTasks(tasks => [...tasks, {...this.state}])
+    this.setState({
+      tarefa: '',
+      tempo: '00:00'
+    })
   }
 
   private setTaskState(event: ChangeEvent<HTMLInputElement>) {
