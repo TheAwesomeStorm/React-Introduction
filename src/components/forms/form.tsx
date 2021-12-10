@@ -10,7 +10,7 @@ export class Form extends React.Component {
 
   render () {
     return (
-      <form className={style.newTask}>
+      <form className={style.newTask} onSubmit={this.saveTask.bind(this)}>
         <div className={style.inputContainer}>
           <label htmlFor="task">Adicione um novo estudo</label>
           <input
@@ -37,6 +37,11 @@ export class Form extends React.Component {
         <Button>Adicionar</Button>
       </form>
     )
+  }
+
+  private saveTask(event: ChangeEvent<HTMLFormElement>) {
+    event.preventDefault()
+    console.log('state: ', this.state)
   }
 
   private setTaskState(event: ChangeEvent<HTMLInputElement>) {
