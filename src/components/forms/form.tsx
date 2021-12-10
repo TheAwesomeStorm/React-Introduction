@@ -34,7 +34,7 @@ export class Form extends React.Component {
             value={this.state.tempo}
             required />
         </div>
-        <Button>Adicionar</Button>
+        <Button type={'submit'}>Adicionar</Button>
       </form>
     )
   }
