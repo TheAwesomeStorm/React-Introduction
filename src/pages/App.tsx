@@ -25,7 +25,7 @@ function App() {
         tasks={tasks}
         selectTask={selectTask}
       />
-      <Stopwatch />
+      <Stopwatch selected={selected} />
     </div>
   );
 }
