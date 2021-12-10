@@ -3,14 +3,23 @@ import style from './list.module.scss'
 import { Item } from './item/item'
 import { Task } from '../../interfaces/task'
 
-export function List({ tasks }: {tasks: Task[]}) {
+interface ListProps {
+  tasks: Task[],
+  selectTask: (selectedTask: Task) => void
+}
+
+export function List({ tasks, selectTask }: ListProps) {
 
   return (
     <aside className={style.taskList}>
       <h2>Estudos do dia</h2>
       <ul>
-        {tasks.map((item, index) => (
-          <Item key={index} {...item} />
+        {tasks.map((item) => (
+          <Item
+            key={item.id}
+            {...item}
+            selectTask={selectTask}
+          />
         ))}
       </ul>
     </aside>
