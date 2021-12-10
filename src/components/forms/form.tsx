@@ -47,7 +47,6 @@ export class Form extends React.Component<FormProps> {
   private saveTask(event: ChangeEvent<HTMLFormElement>) {
     event.preventDefault()
     this.props.setTasks(tasks => [...tasks, {...this.state}])
-    console.log('state: ', this.state)
   }
 
   private setTaskState(event: ChangeEvent<HTMLInputElement>) {
