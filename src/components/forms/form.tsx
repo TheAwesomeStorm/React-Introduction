@@ -1,8 +1,13 @@
 import React, { ChangeEvent } from 'react'
 import style from './form.module.scss'
 import { Button } from '../button/button'
+import { Task } from '../../interfaces/task'
 
-export class Form extends React.Component {
+interface FormProps {
+  setTasks: React.Dispatch<React.SetStateAction<Task[]>>
+}
+
+export class Form extends React.Component<FormProps> {
   public state = {
     tarefa: '',
     tempo: '00:00'
@@ -41,6 +46,7 @@ export class Form extends React.Component {
 
   private saveTask(event: ChangeEvent<HTMLFormElement>) {
     event.preventDefault()
+    this.props.setTasks(tasks => [...tasks, {...this.state}])
     console.log('state: ', this.state)
   }
 
