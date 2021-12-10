@@ -20,7 +20,7 @@ export function Item(
   }
 
   return (
-    <li className={style.item} onClick={teste}>
+    <li className={`${style.item} ${selected ? style.itemSelected : ''}`} onClick={teste}>
       <h3>{tarefa}</h3>
       <span>{tempo}</span>
     </li>

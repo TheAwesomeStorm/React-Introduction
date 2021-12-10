@@ -12,6 +12,10 @@ function App() {
 
   function selectTask(selectedTask: Task) {
     setSelected(selectedTask)
+    setTasks(tasks => tasks.map(task => ({
+      ...task,
+      selected: task.id === selectedTask.id
+    })))
   }
 
   return (
