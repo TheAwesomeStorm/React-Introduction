@@ -2,6 +2,7 @@ import React, { ChangeEvent } from 'react'
 import style from './form.module.scss'
 import { Button } from '../button/button'
 import { Task } from '../../interfaces/task'
+import { v4 as uuidv4 } from 'uuid'
 
 interface FormProps {
   setTasks: React.Dispatch<React.SetStateAction<Task[]>>
@@ -47,7 +48,16 @@ export class Form extends React.Component<FormProps> {
 
   private addTask(event: ChangeEvent<HTMLFormElement>) {
     event.preventDefault()
-    this.props.setTasks(tasks => [...tasks, {...this.state}])
+    this.props.setTasks(tasks =>
+      [
+        ...tasks,
+        {
+          ...this.state,
+          selected: false,
+          done: false,
+          id: uuidv4()
+        }
+      ])
     this.setState({
       tarefa: '',
       tempo: '00:00'

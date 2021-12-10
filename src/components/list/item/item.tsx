@@ -1,11 +1,7 @@
 import style from './item.module.scss';
+import { Task } from '../../../interfaces/task'
 
-interface ItemProps {
-  tarefa: string,
-  tempo: string
-}
-
-export function Item({tarefa, tempo}: ItemProps) {
+export function Item({tarefa, tempo, selected, done, id}: Task) {
   return (
     <li className={style.item}>
       <h3>{tarefa}</h3>
