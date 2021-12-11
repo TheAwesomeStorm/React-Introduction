@@ -8,10 +8,10 @@ import { Task } from '../interfaces/task'
 function App() {
 
   const [tasks, setTasks] = useState<Task[] | []>([])
-  const [selected, setSelected] = useState<Task>()
+  const [selectedTask, setSelectedTask] = useState<Task>()
 
   function selectTask(selectedTask: Task) {
-    setSelected(selectedTask)
+    setSelectedTask(selectedTask)
     setTasks(tasks => tasks.map(task => ({
       ...task,
       selected: task.id === selectedTask.id
@@ -19,10 +19,10 @@ function App() {
   }
 
   function completeTask() {
-    if (selected) {
-      setSelected(undefined)
+    if (selectedTask) {
+      setSelectedTask(undefined)
       setTasks(tasks => tasks.map(task => {
-        if (task.id === selected.id) {
+        if (task.id === selectedTask.id) {
           return {
             ...task,
             selected: false,
@@ -41,7 +41,7 @@ function App() {
         tasks={tasks}
         selectTask={selectTask}
       />
-      <Stopwatch selected={selected} completeTask={completeTask} />
+      <Stopwatch selectedTask={selectedTask} completeTask={completeTask} />
     </div>
   );
 }
