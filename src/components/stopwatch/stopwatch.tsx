@@ -2,7 +2,7 @@ import style from './stopwatch.module.scss'
 import { Watch } from './watch/watch'
 import { Button } from '../button/button'
 import { Task } from '../../interfaces/task'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { timeToSeconds } from '../../common/utils/time-to-seconds'
 
 interface StopwatchProps {
@@ -12,9 +12,12 @@ interface StopwatchProps {
 export function Stopwatch({ selected }: StopwatchProps) {
 
   const [time, setTime] = useState<number>()
-  if (selected?.tempo) {
-    setTime(timeToSeconds(selected.tempo))
-  }
+
+  useEffect(() => {
+    if(selected?.tempo) {
+      setTime(timeToSeconds(selected.tempo))
+    }
+  }, [selected])
 
   return (
     <div className={style.stopwatch}>
