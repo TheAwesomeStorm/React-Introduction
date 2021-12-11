@@ -15,14 +15,17 @@ export function Item(
     selectTask
   }: ItemProps) {
 
-  function teste() {
-    selectTask({tarefa, tempo, selected, done, id})
+  function selectTaskOnClick() {
+    !done && selectTask({tarefa, tempo, selected, done, id})
   }
 
   return (
-    <li className={`${style.item} ${selected ? style.itemSelected : ''}`} onClick={teste}>
+    <li
+      className={`${style.item} ${selected ? style.itemSelected : ''} ${done ? style.itemCompleted : ''}`}
+      onClick={selectTaskOnClick}>
       <h3>{tarefa}</h3>
       <span>{tempo}</span>
+      {done && <span className={style.done} aria-label='task done' />}
     </li>
   )
 }

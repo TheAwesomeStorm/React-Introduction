@@ -6,10 +6,11 @@ import { useEffect, useState } from 'react'
 import { timeToSeconds } from '../../common/utils/time-to-seconds'
 
 interface StopwatchProps {
-  selected: Task | undefined
+  selected: Task | undefined,
+  completeTask: () => void
 }
 
-export function Stopwatch({ selected }: StopwatchProps) {
+export function Stopwatch({ selected, completeTask }: StopwatchProps) {
 
   const [time, setTime] = useState<number>()
 
@@ -25,6 +26,7 @@ export function Stopwatch({ selected }: StopwatchProps) {
         setTime(counter - 1)
         return countDown(counter - 1)
       }
+      completeTask()
     }, 1000)
   }
 

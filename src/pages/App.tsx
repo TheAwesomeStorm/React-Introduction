@@ -18,6 +18,22 @@ function App() {
     })))
   }
 
+  function completeTask() {
+    if (selected) {
+      setSelected(undefined)
+      setTasks(tasks => tasks.map(task => {
+        if (task.id === selected.id) {
+          return {
+            ...task,
+            selected: false,
+            done: true
+          }
+        }
+        return task
+      }))
+    }
+  }
+
   return (
     <div className={style.App}>
       <Form setTasks={setTasks} />
@@ -25,7 +41,7 @@ function App() {
         tasks={tasks}
         selectTask={selectTask}
       />
-      <Stopwatch selected={selected} />
+      <Stopwatch selected={selected} completeTask={completeTask} />
     </div>
   );
 }
