@@ -7,8 +7,8 @@ interface ItemProps extends Task {
 
 export function Item(
   {
-    task,
-    time,
+    description,
+    duration,
     selected,
     done,
     id,
@@ -16,15 +16,15 @@ export function Item(
   }: ItemProps) {
 
   function selectTaskOnClick() {
-    !done && selectTask({task: task, time: time, selected, done, id})
+    !done && selectTask({description: description, duration: duration, selected, done, id})
   }
 
   return (
     <li
       className={`${style.item} ${selected ? style.itemSelected : ''} ${done ? style.itemCompleted : ''}`}
       onClick={selectTaskOnClick}>
-      <h3>{task}</h3>
-      <span>{time}</span>
+      <h3>{description}</h3>
+      <span>{duration}</span>
       {done && <span className={style.done} aria-label='task done' />}
     </li>
   )

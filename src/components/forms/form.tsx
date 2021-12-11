@@ -10,8 +10,8 @@ interface FormProps {
 
 export function Form({ setTasks}: FormProps) {
 
-  const [task, setTask] = useState("")
-  const [time, setTime] = useState("00:00")
+  const [description, setDescription] = useState("")
+  const [duration, setDuration] = useState("00:00")
 
   function addTask(event: ChangeEvent<HTMLFormElement>) {
       event.preventDefault()
@@ -19,23 +19,23 @@ export function Form({ setTasks}: FormProps) {
         [
           ...tasks,
           {
-            task: task,
-            time: time,
+            description: description,
+            duration: duration,
             selected: false,
             done: false,
             id: uuidv4()
           }
         ])
-      setTask('')
-      setTime('00:00')
+      setDescription('')
+      setDuration('00:00')
     }
 
-  function setTaskState(event: ChangeEvent<HTMLInputElement>) {
-      setTask(event.target.value)
+  function setDescriptionOnChange(event: ChangeEvent<HTMLInputElement>) {
+      setDescription(event.target.value)
     }
 
-  function SetTimeState(event: ChangeEvent<HTMLInputElement>) {
-      setTime(event.target.value)
+  function setDurationOnChange(event: ChangeEvent<HTMLInputElement>) {
+      setDuration(event.target.value)
     }
 
   return (
@@ -46,9 +46,9 @@ export function Form({ setTasks}: FormProps) {
           type='text'
           name='task'
           id='task'
-          onChange={setTaskState}
+          onChange={setDescriptionOnChange}
           placeholder='What do you want to study?'
-          value={task}
+          value={description}
           required />
       </div>
       <div className={style.inputContainer}>
@@ -60,8 +60,8 @@ export function Form({ setTasks}: FormProps) {
           id='time'
           min='00:00:00'
           max='01:30:00'
-          onChange={SetTimeState}
-          value={time}
+          onChange={setDurationOnChange}
+          value={duration}
           required />
       </div>
       <Button type={'submit'}>Add</Button>

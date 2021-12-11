@@ -12,18 +12,18 @@ interface StopwatchProps {
 
 export function Stopwatch({ selected, completeTask }: StopwatchProps) {
 
-  const [time, setTime] = useState<number>()
+  const [duration, setDuration] = useState<number>()
 
   useEffect(() => {
-    if(selected?.time) {
-      setTime(timeToSeconds(selected.time))
+    if(selected?.duration) {
+      setDuration(timeToSeconds(selected.duration))
     }
   }, [selected])
 
   function countDown(counter: number = 0) {
     setTimeout(() => {
       if (counter > 0) {
-        setTime(counter - 1)
+        setDuration(counter - 1)
         return countDown(counter - 1)
       }
       completeTask()
@@ -34,9 +34,9 @@ export function Stopwatch({ selected, completeTask }: StopwatchProps) {
     <div className={style.stopwatch}>
       <p className={style.title}>Choose a task and start the stopwatch</p>
       <div className={style.watchWrapper}>
-        <Watch time={time}/>
+        <Watch time={duration}/>
       </div>
-      <Button onClick={() => countDown(time)}>Start</Button>
+      <Button onClick={() => countDown(duration)}>Start</Button>
     </div>
   )
 }
