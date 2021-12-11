@@ -22,9 +22,8 @@ export function Stopwatch({ selected }: StopwatchProps) {
   return (
     <div className={style.stopwatch}>
       <p className={style.title}>Escolha uma tarefa e inicie o cronômetro</p>
-      Tempo: {time}
       <div className={style.watchWrapper}>
-        <Watch />
+        <Watch time={time}/>
       </div>
       <Button>Começar!</Button>
     </div>
