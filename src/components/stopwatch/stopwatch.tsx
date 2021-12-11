@@ -19,13 +19,22 @@ export function Stopwatch({ selected }: StopwatchProps) {
     }
   }, [selected])
 
+  function countDown(counter: number = 0) {
+    setTimeout(() => {
+      if (counter > 0) {
+        setTime(counter - 1)
+        return countDown(counter - 1)
+      }
+    }, 1000)
+  }
+
   return (
     <div className={style.stopwatch}>
       <p className={style.title}>Escolha uma tarefa e inicie o cronômetro</p>
       <div className={style.watchWrapper}>
         <Watch time={time}/>
       </div>
-      <Button>Começar!</Button>
+      <Button onClick={() => countDown(time)}>Começar!</Button>
     </div>
   )
 }
