@@ -15,8 +15,8 @@ export function Stopwatch({ selected, completeTask }: StopwatchProps) {
   const [time, setTime] = useState<number>()
 
   useEffect(() => {
-    if(selected?.tempo) {
-      setTime(timeToSeconds(selected.tempo))
+    if(selected?.time) {
+      setTime(timeToSeconds(selected.time))
     }
   }, [selected])
 
@@ -32,11 +32,11 @@ export function Stopwatch({ selected, completeTask }: StopwatchProps) {
 
   return (
     <div className={style.stopwatch}>
-      <p className={style.title}>Escolha uma tarefa e inicie o cronômetro</p>
+      <p className={style.title}>Choose a task and start the stopwatch</p>
       <div className={style.watchWrapper}>
         <Watch time={time}/>
       </div>
-      <Button onClick={() => countDown(time)}>Começar!</Button>
+      <Button onClick={() => countDown(time)}>Start</Button>
     </div>
   )
 }

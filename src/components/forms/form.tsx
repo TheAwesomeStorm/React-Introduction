@@ -10,8 +10,8 @@ interface FormProps {
 
 export function Form({ setTasks}: FormProps) {
 
-  const [tarefa, setTask] = useState("")
-  const [tempo, setTime] = useState("00:00")
+  const [task, setTask] = useState("")
+  const [time, setTime] = useState("00:00")
 
   function addTask(event: ChangeEvent<HTMLFormElement>) {
       event.preventDefault()
@@ -19,8 +19,8 @@ export function Form({ setTasks}: FormProps) {
         [
           ...tasks,
           {
-            tarefa,
-            tempo,
+            task: task,
+            time: time,
             selected: false,
             done: false,
             id: uuidv4()
@@ -41,18 +41,18 @@ export function Form({ setTasks}: FormProps) {
   return (
     <form className={style.newTask} onSubmit={addTask}>
       <div className={style.inputContainer}>
-        <label htmlFor="task">Adicione um novo estudo</label>
+        <label htmlFor="task">Add a new study</label>
         <input
           type='text'
           name='task'
           id='task'
           onChange={setTaskState}
-          placeholder='O que você quer estudar'
-          value={tarefa}
+          placeholder='What do you want to study?'
+          value={task}
           required />
       </div>
       <div className={style.inputContainer}>
-        <label htmlFor="time">Tempo</label>
+        <label htmlFor="time">Time</label>
         <input
           type='time'
           step='1'
@@ -61,10 +61,10 @@ export function Form({ setTasks}: FormProps) {
           min='00:00:00'
           max='01:30:00'
           onChange={SetTimeState}
-          value={tempo}
+          value={time}
           required />
       </div>
-      <Button type={'submit'}>Adicionar</Button>
+      <Button type={'submit'}>Add</Button>
     </form>
   )
 }

@@ -12,7 +12,7 @@ export function List({ tasks, selectTask }: ListProps) {
 
   return (
     <aside className={style.taskList}>
-      <h2>Estudos do dia</h2>
+      <h2>Day studies</h2>
       <ul>
         {tasks.map((item) => (
           <Item
